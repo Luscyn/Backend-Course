@@ -1,0 +1,16 @@
+### TEST GET / WEBSITE
+GET http://localhost:3001/
+
+### TEST GET /dashboard WEBSITE
+GET http://localhost:3001/dashboard
+
+### DATA ENDPOINT
+GET http://localhost:3001/api/data
+
+### DATA ENDPOINT FOR ADDING A USER
+POST http://localhost:3001/api/data
+Content-Type: application/json
+
+{
+    "name": "gilgamesh"
+}
