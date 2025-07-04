@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 // import { authRoutes } from './routes/authRoutes.js' // - when importing named export
 import authRoutes from './routes/authRoutes.js'
 import todoRoutes from './routes/todoRoutes.js'
+import authMiddleware from './middleware/authMiddleware.js';
 
 
 const app = express();
@@ -35,7 +36,7 @@ app.get('/', (req,res) => {
 // Routes
          //auth  //{our route} ->  /auth/{route}
 app.use('/auth', authRoutes); // All authentication routes
-app.use('/to-do', todoRoutes); 
+app.use('/todos', authMiddleware, todoRoutes); 
 
 
 app.listen(PORT, ()=> {
