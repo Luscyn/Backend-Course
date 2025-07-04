@@ -3,12 +3,12 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 // import { authRoutes } from './routes/authRoutes.js' // - when importing named export
 import authRoutes from './routes/authRoutes.js'
-import toDoRoute from './routes/todoRoutes.js'
+import todoRoutes from './routes/todoRoutes.js'
 
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;;
+const PORT = process.env.PORT || 5001;;
 
 
 // Get the file path from the URL of the current module
@@ -35,7 +35,7 @@ app.get('/', (req,res) => {
 // Routes
          //auth  //{our route} ->  /auth/{route}
 app.use('/auth', authRoutes); // All authentication routes
-app.use('/to-do', toDoRoute);
+app.use('/to-do', todoRoutes); 
 
 
 app.listen(PORT, ()=> {

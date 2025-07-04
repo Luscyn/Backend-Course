@@ -15,9 +15,15 @@ router.post('/', (req,res) => {
 })
 
 // Update to-do
-// Dynamic Query Parameter
+// Dynamic Query Parameter, identifying which to do needs modification
 router.put('/:id', (req,res) => {
 
 })
+
+// Delete a to-do
+router.delete('/:id', (req,res) => {
+
+})
+
 
 export default router;
