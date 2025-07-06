@@ -2,11 +2,12 @@ import express from 'express';
 import bcrypt from 'bcryptjs'; // encrypting password
 import jwt from 'jsonwebtoken';
 import db from '../db.js';
+import prisma from '../prismaClient.js';
 
 const router = express.Router() // mini router to e used in the main app
 
 // Register new user
-router.post('/register', (req,res) => {
+router.post('/register', async (req,res) => {
     const { username, password } = req.body
     const hashedPassword = bcrypt.hashSync(password, 8) // number of salt
 
@@ -17,16 +18,26 @@ router.post('/register', (req,res) => {
 
     // save the new user and hashed password to the db
     try {
-        const insertUser = db.prepare(`INSERT INTO users (username, password) VALUES (?, ?)`); // inserting safely
-        const result = insertUser.run(username, hashedPassword);
+        const user = await prisma.user.create({
+            data: {
+                username,
+                password: hashedPassword
+            }
+        })
 
         // Setting up first to-do
         const defaultTodo = `Hello ${username}! Add your first todo!`;
-        const insertTodo = db.prepare(`INSERT INTO todos (user_id, task) VALUES (?, ?)`);
-        insertTodo.run(result.lastInsertRowid, defaultTodo);
+
+        await prisma.todo.create({
+            data: {
+                task: defaultTodo,
+                userId: user.id
+            }
+        })
+        
 
         // Creating a token
-        const token = jwt.sign({id: result.lastInsertRowid}, process.env.JWT_SECRET, {expiresIn: '24h'})
+        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '24h'})
         res.json({ token }) // token to confirm that they are the right user
 
         
@@ -40,7 +51,7 @@ router.post('/register', (req,res) => {
     
 })
 
-router.post('/login', (req,res)=>{
+router.post('/login', async (req,res)=>{
     // get email and pass and check associated with database
     // but its encrypted in database and not same w/pass
     // but we can encrypt the pass again and compare it to the encrypted in the database
@@ -48,8 +59,11 @@ router.post('/login', (req,res)=>{
     const { username, password } = req.body;
 
     try {
-        const getUser = db.prepare(` SELECT * from users WHERE username = ?`);
-        const user = getUser.get(username)
+        const user = await prisma.user.findUnique({
+            where: {
+                username: username
+            }
+        })
 
         if(!user) {
             return res.status(404).send({message: 'User not found'})
