@@ -1,7 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcryptjs'; // encrypting password
 import jwt from 'jsonwebtoken';
-import db from '../db.js';
 import prisma from '../prismaClient.js';
 
 const router = express.Router() // mini router to e used in the main app
