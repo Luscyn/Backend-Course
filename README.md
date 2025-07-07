@@ -1,62 +1,62 @@
-MERN Stack Learning Journey
-I am learning the MERN stack as quickly as possible. This repository holds my notes and code from a JavaScript fundamentals YouTube tutorial.
+# MERN Stack Learning Journey
 
-Course Content
-This repository follows a comprehensive backend development course that covers everything from the basics of how the internet works to building and deploying complex applications. The course is divided into four chapters:
+Hello! I am learning the MERN stack as quickly as possible.  
+This repository holds my notes and code from a JavaScript fundamentals YouTube tutorial.  
+It also includes exercises I created with GPT to help me practice and understand the concepts better.
 
-Chapter 1: Theory
+---
 
-Introduction to the full stack, front end, and back end.
+## Course Content
 
-Understanding how the internet works, including network requests, IP addresses, and servers.
+This repository follows a comprehensive backend development course that covers everything from basic internet concepts to full-stack application deployment. The course is divided into four chapters:
 
-Chapter 2: Basic Backend Project
+### Chapter 1: Theory
 
-Setting up a development environment with Node.js, npm, and Visual Studio Code.
+- Introduction to the full stack, front end, and back end
+- How the internet works (network requests, IP addresses, servers)
 
-Building a simple backend server using Express.js.
+### Chapter 2: Basic Backend Project
 
-Handling routes, requests, and responses.
+- Setting up Node.js, npm, and Visual Studio Code
+- Building a simple backend server using Express.js
+- Handling routes, requests, and responses
+- Testing API endpoints with a client emulator
 
-Using a client emulator to test API endpoints.
+### Chapter 3: NodeJS + SQLite Project
 
-Chapter 3: NodeJS SQLite Project
+- Building a structured backend application
+- Using SQLite as a lightweight database
+- Implementing user authentication with JWT
+- Creating a full-stack to-do application
 
-Building a more advanced backend application with a structured project directory.
+### Chapter 4: Final Project
 
-Using SQLite as a lightweight database.
+- Upgrading to PostgreSQL database
+- Using Prisma as an ORM
+- Containerizing the application with Docker
+- Deploying and scaling the application
 
-Implementing user authentication with JWT (JSON Web Tokens).
+---
 
-Creating a full stack to-do application.
+## Getting Started
 
-Chapter 4: Final Project
+To run the projects in this repository, make sure you have the following installed:
 
-Upgrading the application to use a PostgreSQL database.
+- Node.js  
+- Docker
 
-Using Prisma as an ORM (Object-Relational Mapper) to interact with the database.
+### Example: Running the Final Project (Chapter 4)
 
-Containerizing the application with Docker for easy deployment and scalability.
+1. Clone the repository:
+  git clone <repository-url>
+2. Navigate to the project directory:
+  cd chapter4
+3. Install the dependencies:
+  npm install
+4. Build and run Docker containers:
+  docker-compose up --build
 
-Getting Started
-To get started with the projects in this repository, you will need to have the following installed on your machine:
+Once started, you can access the application at:
+http://localhost:5003
 
-Node.js
 
-Docker
-
-Once you have the prerequisites installed, you can clone the repository and navigate to the project you want to run. For example, to run the final project in Chapter 4, you would follow these steps:
-
-Clone the repository:
-git clone <repository-url>
-
-Navigate to the project directory:
-cd chapter4
-
-Install the dependencies:
-npm install
-
-Build and run the Docker containers:
-docker-compose up --build
-
-This will start the application, and you can access it in your browser at http://localhost:5003.
